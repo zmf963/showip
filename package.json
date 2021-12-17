@@ -2,14 +2,14 @@
 	"name": "showip",
 	"displayName": "showip",
 	"description": "show ip，显示当前的机器的内网ip与公网ip。",
-	"version": "0.0.1",
+	"version": "0.1.0",
 	"engines": {
 		"vscode": "^1.63.0"
 	},
 	"categories": [
 		"Other"
 	],
-	"publisher":"zmf96",
+	"publisher": "zmf96",
 	"activationEvents": [
 		"onCommand:showip.showip"
 	],
@@ -49,6 +49,5 @@
 		"webpack": "^5.52.1",
 		"webpack-cli": "^4.8.0"
 	},
-	"dependencies": {
-	}
+	"dependencies": {}
 }
