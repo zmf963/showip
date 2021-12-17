@@ -17,6 +17,21 @@ function getIPAdress() {
 	return ret;
 }
 
+async function getPublicIPAddress() {
+	const axios = require('axios');
+	try {
+		const response = await axios.get('http://pv.sohu.com/cityjson?ie=utf-8');
+		console.log(response.data);
+		let _pip = response.data;
+		_pip = _pip.split("=")[1];
+		_pip = _pip.replace(";", "");
+		let publicIP = JSON.parse(_pip);
+		return publicIP;
+	} catch (error) {
+		console.error(error);
+	}
+}
+
 // this method is called when your extension is activated
 // your extension is activated the very first time the command is executed
 export function activate(context: vscode.ExtensionContext) {
@@ -31,9 +46,11 @@ export function activate(context: vscode.ExtensionContext) {
 	let disposable = vscode.commands.registerCommand('showip.showip', async () => {
 		// The code you place here will be executed every time your command is executed
 		// Display a message box to the user
-		let ips = getIPAdress();
-
-		vscode.window.showInformationMessage('current ip: ' + ips);
+		let ret = await getPublicIPAddress();
+		let localIp = getIPAdress();
+		vscode.window.showInformationMessage("公网IP: " + ret.cip + " 内网地址: " + localIp + " 地址: " + ret.cname);
+		vscode.window.setStatusBarMessage(ret.cname + " " + ret.cip + " ");
+		console.log(ret);
 	});
 
 	context.subscriptions.push(disposable);
