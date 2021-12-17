@@ -1,9 +1,11 @@
 # Change Log
 
-All notable changes to the "showip" extension will be documented in this file.
+## 0.0.2
 
-Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
+显示当前的机器的ip。
+## 0.0.1
 
+show ip
 ## [Unreleased]
 
 - Initial release
